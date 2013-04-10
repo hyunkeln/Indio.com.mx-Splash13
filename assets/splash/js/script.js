@@ -25,7 +25,6 @@ function replaceAll( text, busca, reemplaza ){
   return text;
 }
 
-
 $(function() {
 	
 	for(var i=0;i<paises.length;i++)	
@@ -44,16 +43,7 @@ $(function() {
 	  		if($(this).attr("maxlength")==4) $("button").focus();
 	  		else $(this).parents("li").next().find(".dateField").focus();
 	});
+	$('#cont-gral').hide();
 });
 
-$(function() {
-	$('#cont-gral').hide();
- });
- function isOver18(){
-	   
-  	  var fecha = new Date($("#year").val(), $("#month").val()*1-1, $("#day").val());
-  	  var ahora = new Date();
-  	  var age = ahora.getTime() - fecha.getTime();
-
-	  return !age < (1000 * 60 * 60 * 24 * 365.26 * 18);
- }
+ 

@@ -63,13 +63,20 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-  function formSubmit(){
+  function formSubmit(){ 
+	  if($("#day").val()*1==0 || $("#month").val()*1==0 || $("#year").val()*1==0) return false; 
+	  if($("#day").val()*1<0 || $("#day").val()*1>31) return false;
+	  if($("#month").val()*1<0 || $("#month").val()*1>12) return false;
+	  if($("#year").val()*1<1900) return false;
+	  
 	  var indioURL = "http://www.indio.com.mx/home";
 	  var otraURL = "http://www.conductordesignado.com.mx";
 	  var pais = $("select option:selected").val();
-	  if(isOver18()) alert(indioUrl + "?" +pais);
-	  else alert(otraURL);
-	   
+	  var fecha = new Date($("#year").val(), $("#month").val()*1-1, $("#day").val());
+  	  var ahora = new Date();
+  	  var age = ahora.getTime() - fecha.getTime();
+  	  if(age < (1000 * 60 * 60 * 24 * 365.26 * 18)) console.log(otraURL);
+	  else console.log(indioURL);
 	  return false;
   }
 </script>

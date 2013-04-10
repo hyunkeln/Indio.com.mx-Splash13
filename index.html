@@ -11,6 +11,7 @@
 </head>
 
 <body onload="fadeIn();">
+<a class="goHome" href="/home">Home</a>
 <div class="wrapper">
 	<div id="cont-gral">
 		<div id="logo-indio">
@@ -19,19 +20,20 @@
 	    <div id="top-text">
 	    	<p class="title">Ingresa tu fecha de nacimiento</p>
 	    </div>
+	    <form onsubmit="return formSubmit();">
 	    <div id="buttons">
 	    	<ul>
 	        	<li>
 	        		<span>Día</span><br/>
-	        		<input name="day" id="day" maxlength="2" value="07">
+	        		<input class="dateField" name="day" id="day" maxlength="2" value="">
 	        	</li>
 	        	<li>
 	        		<span>Mes</span><br/>
-	        		<input name="month" id="moth" maxlength="2" value="08">
+	        		<input class="dateField" name="month" id="month" maxlength="2" value="">
 	        	</li>
 	        	<li class="last">
 	        		<span>Año</span><br/>
-	        		<input class="large" name="year" id="year" value="1980">
+	        		<input class="dateField large" name="year" id="year" maxlength="4" value="">
 	        	</li>
 	        </ul>
 	    </div>
@@ -39,10 +41,16 @@
 	    <p class="title-small">Selecciona tu país</p>
 		<select class="styled">
 		</select> 
+		<br/><br/><br/>
 		<!- dinamically added via js-->
-	    <div id="logo-ccm"><img alt="Cervecería Cuauhtémoc Moctezuma" src="http://www.indio.com.mx/assets/indiocc/images/Logo_CM.png" /></div>
-	    <div id="prefooter-text">&copy;2012 Derechos Reservados  Cuauht&eacute;moc Moctezuma.<br/>El acceso y uso de este sitio est&aacute; condicionado a las Pol&iacute;ticas de privacidad y la Informaci&oacute;n Legal.</div>
-	    <div id="footer-text">LA COSA ES BUSCARLE<span class="reg">&reg;</span></div>
+		<button type="submit"><img src="assets/splash/images/entrar.png"></button>
+		</form>
+	    <div class="footer">
+		    <div id="prefooter-text" class="left">&copy;2013 Derechos Reservados  Cuauht&eacute;moc Moctezuma.<br/>El acceso y uso de este sitio est&aacute; condicionado a las Pol&iacute;ticas de privacidad y la Informaci&oacute;n Legal.</div>
+		    <div id="logo-ccm" class="left"><img alt="Cervecería Cuauhtémoc Moctezuma" src="assets/splash/images/ccmlogo.png" /></div>
+		    <div class="clear"></div>
+		    <div class="evita">Evita el exceso<div>
+	    </div>
 	</div>
 </div>
 <script type="text/javascript">
@@ -55,6 +63,15 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+  function formSubmit(){
+	  var indioURL = "http://www.indio.com.mx/home";
+	  var otraURL = "http://www.conductordesignado.com.mx";
+	  var pais = $("select option:selected").val();
+	  if(isOver18()) alert(indioUrl + "?" +pais);
+	  else alert(otraURL);
+	   
+	  return false;
+  }
 </script>
 </body>
 </html>

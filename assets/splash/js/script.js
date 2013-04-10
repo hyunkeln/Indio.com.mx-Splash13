@@ -17,21 +17,43 @@ function cleanString(str){
 	str = replaceAll( str, "Ú", "U" );
 	str = replaceAll( str, "ñ", "n" );
 	str = replaceAll( str, "Ñ", "N" );
-	return str
+	return str.toLowerCase();
 }
 function replaceAll( text, busca, reemplaza ){
   while (text.toString().indexOf(busca) != -1)
-      text = text.toString().replace(busca,reemplaza);
+      text = text.toString().replace(busca,reemplaza); 
   return text;
 }
 
 
 $(function() {
+	
 	for(var i=0;i<paises.length;i++)	
 	$('select').append("<option class='"+cleanString(paises[i])+"' value='"+cleanString(paises[i])+"'>"+paises[i]+"</option>");
-	$('select .Mexico').attr("selected","selected")
+	$('select .mexico').attr("selected","selected");
+	$(".dateField").val("");
+
+	$(".dateField:first").focus();
+	$(".dateField").focusin(function(){
+		$(this).val("");
+	});
+	$(".dateField").keyup(function(event) {
+		console.log(event.which)
+	  if(event.which!=9 && event.which!=13) 
+	  	if($(this).val().length == $(this).attr("maxlength")) 
+	  		if($(this).attr("maxlength")==4) $("button").focus();
+	  		else $(this).parents("li").next().find(".dateField").focus();
+	});
 });
 
 $(function() {
 	$('#cont-gral').hide();
  });
+ function isOver18(){
+	   
+  	  var fecha = new Date($("#year").val(), $("#month").val()*1-1, $("#day").val());
+  	  var ahora = new Date();
+  	  var age = ahora.getTime() - fecha.getTime();
+
+	  return !age < (1000 * 60 * 60 * 24 * 365.26 * 18);
+ }

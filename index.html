@@ -75,8 +75,8 @@
 	  var fecha = new Date($("#year").val(), $("#month").val()*1-1, $("#day").val());
   	  var ahora = new Date();
   	  var age = ahora.getTime() - fecha.getTime();
-  	  if(age < (1000 * 60 * 60 * 24 * 365.26 * 18)) console.log(otraURL);
-	  else console.log(indioURL);
+  	  if(age < (1000 * 60 * 60 * 24 * 365.26 * 18)) top.location = otraURL;
+	  else top.location = indioURL+"?"+pais;
 	  return false;
   }
 </script>

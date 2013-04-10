@@ -3,11 +3,11 @@
 
 @font-face {
     font-family: 'HelveticaNeueLTStd67MdCn';
-    src: url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot');
-    src: url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.woff') format('woff'),
-         url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.ttf') format('truetype'),
-         url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.svg#HelveticaNeueLTStd67MdCn') format('svg');
+    src: url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot');
+    src: url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.woff') format('woff'),
+         url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.ttf') format('truetype'),
+         url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.svg#HelveticaNeueLTStd67MdCn') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -94,7 +94,7 @@ body{
 	
 }
 .title{
-	font-size: 36px;
+	font-size: 50px;
 	font-weight: normal;
 	margin: 18px;
 	font-family: HelveticaNeueLTStd67MdCn,Arial,Helvetica,sans-serif;
@@ -103,7 +103,7 @@ body{
 .title-small{
 	clear: both;
 	font-family: HelveticaNeueLTStd67MdCn,Arial,Helvetica,sans-serif;
-	font-size: 25px;
+	font-size: 32px;
 	font-weight: normal;
 	line-height: 26px;
 	margin: 2px;
@@ -166,12 +166,12 @@ list-style: none outside none;
  }
  #prefooter-text{
 	font-family: HelveticaNeueLTStd67MdCn,Arial,Helvetica,sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 16px;
     padding-top: 8px;
     text-transform: uppercase;
     padding-top: 36px;
-    margin-right: 3px;
+    margin-right: 10px;
  }
  #footer-text{
  	font-size: 24px;

@@ -1,4 +1,6 @@
-Indio.com.mx-Splash13
+Indio.com.mx Drupal Splash Page '13
 =====================
 
-Indio.com.mx Splash 13
+Versión HTML del splash page de Indio.com.mx
+
+

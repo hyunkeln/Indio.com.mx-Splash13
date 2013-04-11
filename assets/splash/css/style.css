@@ -3,14 +3,14 @@
 
 @font-face {
     font-family: 'HelveticaNeueLTStd67MdCn';
-    src: url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot');
-    src: url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.woff') format('woff'),
-         url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.ttf') format('truetype'),
-         url('http://admin.unionmedio.com/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.svg#HelveticaNeueLTStd67MdCn') format('svg');
+    src: url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot');
+    src: url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.woff') format('woff'),
+         url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.ttf') format('truetype'),
+         url('http://www.indio.com.mx/sites/all/themes/indiocc/css/fonts/helveticaneueltstd-mdcn-webfont.svg#HelveticaNeueLTStd67MdCn') format('svg');
     font-weight: normal;
     font-style: normal;
-
+ 
 }
  
 html, body, div, span, applet, object, iframe,
@@ -143,13 +143,19 @@ list-style: none outside none;
  #buttons input{
 	 background-color: transparent;
 	 border: 1px solid #fadb7d;
-	 width: 110px;
-	 height: 100px;
+	 width: 134px;
+	 height: 93px;
 	 color: white;
 	 font-family: HelveticaNeueLTStd67MdCn,Arial,Helvetica,sans-serif;
 	 font-size: 92px;
-	 padding-left: 7px;
+	 padding-top: 23px;
+	 text-align: center;
  }
+  #buttons input.error{
+	  border-color: #800;
+	  box-shadow: 0px 0px 9px 2px #800;
+	  color: #900;
+  }
   #buttons input.large{
 	  width: 210px;
 
@@ -161,7 +167,7 @@ list-style: none outside none;
  #buttons{
 	margin: auto;
 	padding: 4px 0;
-	width: 520px;
+	width: 558px;
 	height: 143px;
  }
  #prefooter-text{

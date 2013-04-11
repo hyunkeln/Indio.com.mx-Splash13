@@ -3,6 +3,7 @@ var paises = new Array("Abjasia","Acrotiri y Dhekelia","Afganistán","Albania","
  
  fadeIn = function(){
  	$('#cont-gral').fadeIn();
+ 	$(".dateField:first").focus();
  }
 function cleanString(str){
 	str = replaceAll( str, "á", "a" ); 
@@ -24,26 +25,71 @@ function replaceAll( text, busca, reemplaza ){
       text = text.toString().replace(busca,reemplaza); 
   return text;
 }
-
+function isOver18(){
+	  var fecha = new Date($("#year").val(), $("#month").val()*1-1, $("#day").val());
+  	  var ahora = new Date();
+  	  var age = ahora.getTime() - fecha.getTime();
+  	  return !(age < (1000 * 60 * 60 * 24 * 365.26 * 18));
+}
+function changeInputSatus(selector,rem){
+  	  var cl = "error"; //error class
+  	  var d= 100; // delay
+  	  if(typeof rem==="undefined") rem = false;
+	  
+	  $(selector).addClass(cl);
+	  if(rem) $(selector).removeClass(cl);
+	  return false;
+}
+function isValidDate(keyPressed){
+	  if(typeof keyPressed==="undefined") keyPressed = false;
+	  $("#buttons input").removeClass("error");
+	  var isValid = true;
+	  if($("#day").val()=="" && $("#month").val()=="" && $("#year").val()=="") {
+	  	  if(!keyPressed) changeInputSatus("#buttons input");
+		  return false
+	  }; 
+	  if(!keyPressed){
+		 if($("#day").val()==""){changeInputSatus("#buttons input#day");isValid=false;} 
+		 if($("#month").val()==""){changeInputSatus("#buttons input#month");isValid=false;} 
+		 if($("#year").val()==""){changeInputSatus("#buttons input#year");isValid=false;} 
+	  }
+	  if($("#day").val()*1<0 || $("#day").val()*1>31 || isNaN($("#day").val()*1) ){
+		  changeInputSatus("#buttons input#day");
+		  isValid = false;
+	  }
+	  if($("#month").val()*1<0 || $("#month").val()*1>12 || isNaN($("#month").val()*1)){
+	  	  changeInputSatus("#buttons input#month");
+		  isValid = false;
+	  }
+	  if($("#year").val()!="" && $("#year").val()*1<1900 || isNaN($("#year").val()*1) || $("#year").val()!="" && $("#year").val()*1>2010){
+	  	  changeInputSatus("#buttons input#year");
+		  isValid = false;
+	  };
+	  if($("#year").val().length<4 && $("#year").val().length<4 && !keyPressed) changeInputSatus("#buttons input#year");
+	  else changeInputSatus("#buttons input#year",true);
+	  return isValid; 
+}
 $(function() {
-	
+	$('#cont-gral').hide();
 	for(var i=0;i<paises.length;i++)	
 	$('select').append("<option class='"+cleanString(paises[i])+"' value='"+cleanString(paises[i])+"'>"+paises[i]+"</option>");
 	$('select .mexico').attr("selected","selected");
 	$(".dateField").val("");
 
-	$(".dateField:first").focus();
-	$(".dateField").focusin(function(){
-		$(this).val("");
-	});
+	
 	$(".dateField").keyup(function(event) {
-		console.log(event.which)
 	  if(event.which!=9 && event.which!=13) 
 	  	if($(this).val().length == $(this).attr("maxlength")) 
 	  		if($(this).attr("maxlength")==4) $("button").focus();
 	  		else $(this).parents("li").next().find(".dateField").focus();
+	  isValidDate(true);	
 	});
-	$('#cont-gral').hide();
+	
+	$(".dateField").focusin(function(){
+		$(this).val("");
+		$(this).removeClass("error");
+	});
+	
 });
 
  

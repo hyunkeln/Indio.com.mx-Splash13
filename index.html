@@ -5,9 +5,9 @@
 <META NAME="Description" CONTENT="Blog, videos, podcast, música gratis y entrevistas sobre la escena musical independiente, entretenimiento, cine, cultura urbana y tendencias.">
 <META NAME="keywords" CONTENT="warpig, el warpig,ariadna montañez,mountains, mafer olvera, miguel solis, baxter, el baxter, paula astorga, abulon, paella, al paella, alderete, toni francois, camilo lara, seher, cerveza indio, cervezas indio, la cosa es buscale. cerveza indio etiquetas">
 <title>Cerveza Indio :: La cosa es buscarle :: indio.com.mx</title>
-<link rel='stylesheet' type='text/css' href='assets/splash/css/style.css'>
+<link rel='stylesheet' type='text/css' href='http://cdn.indio.com.mx/assets/splash/css/style.css'>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="assets/splash/js/script.js"></script>
+<script type="text/javascript" src="http://cdn.indio.com.mx/assets/splash/js/script.js"></script>
 </head>
 
 <body onload="fadeIn();">
@@ -15,25 +15,25 @@
 <div class="wrapper">
 	<div id="cont-gral">
 		<div id="logo-indio">
-			<img alt="Cerveza Indio" title="CERVEZA INDIO"  src="assets/splash/images/logo.png" />
+			<img alt="Cerveza Indio" title="CERVEZA INDIO"  src="http://cdn.indio.com.mx/assets/splash/images/logo.png" />
 		</div>
 	    <div id="top-text">
 	    	<p class="title">Ingresa tu fecha de nacimiento</p>
 	    </div>
-	    <form onsubmit="return formSubmit();">
+	    <form id="fechaNacimiento"> 
 	    <div id="buttons">
 	    	<ul>
 	        	<li>
 	        		<span>Día</span><br/>
-	        		<input class="dateField" name="day" id="day" maxlength="2" value="">
+	        		<input autocomplete="off" class="dateField" name="day" id="day" maxlength="2" value="" placeholder="DD">
 	        	</li>
 	        	<li>
 	        		<span>Mes</span><br/>
-	        		<input class="dateField" name="month" id="month" maxlength="2" value="">
+	        		<input autocomplete="off" class="dateField" name="month" id="month" maxlength="2" value=""  placeholder="MM">
 	        	</li>
 	        	<li class="last">
 	        		<span>Año</span><br/>
-	        		<input class="dateField large" name="year" id="year" maxlength="4" value="">
+	        		<input autocomplete="off" class="dateField large" name="year" id="year" maxlength="4" value=""  placeholder="YYYY">
 	        	</li>
 	        </ul>
 	    </div>
@@ -43,11 +43,11 @@
 		</select> 
 		<br/><br/><br/>
 		<!- dinamically added via js-->
-		<button type="submit"><img src="assets/splash/images/entrar.png"></button>
+		<button type="submit"><img src="http://cdn.indio.com.mx/assets/splash/images/entrar.png"></button>
 		</form>
 	    <div class="footer">
 		    <div id="prefooter-text" class="left">&copy;2013 Derechos Reservados  Cuauht&eacute;moc Moctezuma.<br/>El acceso y uso de este sitio est&aacute; condicionado a las Pol&iacute;ticas de privacidad y la Informaci&oacute;n Legal.</div>
-		    <div id="logo-ccm" class="left"><img alt="Cervecería Cuauhtémoc Moctezuma" src="assets/splash/images/ccmlogo.png" /></div>
+		    <div id="logo-ccm" class="left"><img alt="Cervecería Cuauhtémoc Moctezuma" src="http://cdn.indio.com.mx/assets/splash/images/ccmlogo.png" /></div>
 		    <div class="clear"></div>
 		    <div class="evita">Evita el exceso<div>
 	    </div>
@@ -63,22 +63,20 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-  function formSubmit(){ 
-	  if($("#day").val()*1==0 || $("#month").val()*1==0 || $("#year").val()*1==0) return false; 
-	  if($("#day").val()*1<0 || $("#day").val()*1>31) return false;
-	  if($("#month").val()*1<0 || $("#month").val()*1>12) return false;
-	  if($("#year").val()*1<1900) return false;
+  $("#fechaNacimiento").bind("submit",function(e){
+  	  e.preventDefault();
+  	  e.stopPropagation();
 	  
+  	  if(!isValidDate()) return false;
 	  var indioURL = "http://www.indio.com.mx/home";
 	  var otraURL = "http://www.conductordesignado.com.mx";
 	  var pais = $("select option:selected").val();
-	  var fecha = new Date($("#year").val(), $("#month").val()*1-1, $("#day").val());
-  	  var ahora = new Date();
-  	  var age = ahora.getTime() - fecha.getTime();
-  	  if(age < (1000 * 60 * 60 * 24 * 365.26 * 18)) top.location = otraURL;
+	  
+  	  if(!isOver18()) top.location = otraURL;
 	  else top.location = indioURL+"?"+pais;
 	  return false;
-  }
+  });
+  
 </script>
 </body>
 </html>
